@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginContent(onBackClick: () -> Unit, onSignUpClick: () -> Unit) {
+fun LoginContent(onBackClick: () -> Unit, onSignUpClick: () -> Unit, onLoginSuccess: () -> Unit) {
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -95,7 +95,7 @@ fun LoginContent(onBackClick: () -> Unit, onSignUpClick: () -> Unit) {
                     color = Color(0xFF4A43A8),
                     shape = RoundedCornerShape(30.dp)
                 )
-                .clickable { /* Handle Login */ },
+                .clickable { onLoginSuccess() },
             contentAlignment = Alignment.Center
         ) {
             Text(

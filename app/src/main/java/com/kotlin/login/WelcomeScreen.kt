@@ -52,7 +52,8 @@ fun WelcomeScreen() {
                 composable("login") {
                     LoginContent(
                         onBackClick = { navController.popBackStack() },
-                        onSignUpClick = { navController.navigate("register") }
+                        onSignUpClick = { navController.navigate("register") },
+                        onLoginSuccess = { navController.navigate("contacts") }
                     )
                 }
                 composable("register") {
@@ -60,6 +61,9 @@ fun WelcomeScreen() {
                         onBackClick = { navController.popBackStack() },
                         onLoginClick = { navController.navigate("login") }
                     )
+                }
+                composable("contacts") {
+                    ContactsScreen()
                 }
             }
         }
