@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.kotlin.login.screens.PokemonScreen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -55,7 +56,7 @@ fun WelcomeScreen() {
             LoginContent(
                 onBackClick = { navController.popBackStack() },
                 onSignUpClick = { navController.navigate("register") },
-                onLoginSuccess = { navController.navigate("contacts") }
+                onLoginSuccess = { navController.navigate("pokemon") }
             )
         }
         composable("register") {
@@ -66,6 +67,11 @@ fun WelcomeScreen() {
         }
         composable("contacts") {
             ContactsScreen()
+        }
+        composable("pokemon") {
+            PokemonScreen(
+                onBackClick = { navController.popBackStack() }
+            )
         }
     }
 }
