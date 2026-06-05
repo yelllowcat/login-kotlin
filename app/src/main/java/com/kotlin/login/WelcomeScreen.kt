@@ -27,45 +27,45 @@ import androidx.navigation.compose.rememberNavController
 fun WelcomeScreen() {
     val navController = rememberNavController()
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color(0xFF4A43A8)),
-        contentAlignment = Alignment.Center
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth(0.9f)
-                .fillMaxHeight(0.95f)
-                .background(
-                    color = Color.White,
-                    shape = RoundedCornerShape(40.dp)
-                )
-        ) {
-            NavHost(navController = navController, startDestination = "welcome") {
-                composable("welcome") {
+    NavHost(navController = navController, startDestination = "welcome") {
+        composable("welcome") {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color(0xFF4A43A8)),
+                contentAlignment = Alignment.Center
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.9f)
+                        .fillMaxHeight(0.95f)
+                        .background(
+                            color = Color.White,
+                            shape = RoundedCornerShape(40.dp)
+                        )
+                ) {
                     WelcomeContent(
                         onLoginClick = { navController.navigate("login") },
                         onSignUpClick = { navController.navigate("register") }
                     )
                 }
-                composable("login") {
-                    LoginContent(
-                        onBackClick = { navController.popBackStack() },
-                        onSignUpClick = { navController.navigate("register") },
-                        onLoginSuccess = { navController.navigate("contacts") }
-                    )
-                }
-                composable("register") {
-                    RegisterContent(
-                        onBackClick = { navController.popBackStack() },
-                        onLoginClick = { navController.navigate("login") }
-                    )
-                }
-                composable("contacts") {
-                    ContactsScreen()
-                }
             }
+        }
+        composable("login") {
+            LoginContent(
+                onBackClick = { navController.popBackStack() },
+                onSignUpClick = { navController.navigate("register") },
+                onLoginSuccess = { navController.navigate("contacts") }
+            )
+        }
+        composable("register") {
+            RegisterContent(
+                onBackClick = { navController.popBackStack() },
+                onLoginClick = { navController.navigate("login") }
+            )
+        }
+        composable("contacts") {
+            ContactsScreen()
         }
     }
 }
